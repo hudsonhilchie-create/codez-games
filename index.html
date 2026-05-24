@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codez Games - Play Awesome Games</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Codez Games</h1>
+            <p>Your favorite games, all in one place!</p>
+        </header>
+
+        <nav class="game-menu">
+            <button class="menu-btn active" onclick="showGame('home')">Home</button>
+            <button class="menu-btn" onclick="showGame('snake')">🐍 Snake</button>
+            <button class="menu-btn" onclick="showGame('tictactoe')">⭕ Tic Tac Toe</button>
+            <button class="menu-btn" onclick="showGame('2048')">2️⃣0️⃣4️⃣8️⃣ 2048</button>
+            <button class="menu-btn" onclick="showGame('memory')">🧠 Memory Game</button>
+            <button class="menu-btn" onclick="showGame('flappy')">🐦 Flappy Bird</button>
+        </nav>
+
+        <!-- Home Screen -->
+        <div id="home" class="game-screen active">
+            <div class="home-content">
+                <h2>Welcome to Codez Games!</h2>
+                <p>Choose a game from the menu above to get started.</p>
+                <div class="games-grid">
+                    <div class="game-card" onclick="showGame('snake')">
+                        <div class="game-icon">🐍</div>
+                        <h3>Snake</h3>
+                        <p>Classic snake game. Eat food and grow!</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('tictactoe')">
+                        <div class="game-icon">⭕</div>
+                        <h3>Tic Tac Toe</h3>
+                        <p>Play against the computer</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('2048')">
+                        <div class="game-icon">2️⃣</div>
+                        <h3>2048</h3>
+                        <p>Combine tiles to reach 2048</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('memory')">
+                        <div class="game-icon">🧠</div>
+                        <h3>Memory Game</h3>
+                        <p>Match pairs and test your memory</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('flappy')">
+                        <div class="game-icon">🐦</div>
+                        <h3>Flappy Bird</h3>
+                        <p>Tap to fly through obstacles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Snake Game -->
+        <div id="snake" class="game-screen">
+            <div class="game-header">
+                <h2>🐍 Snake Game</h2>
+                <div class="game-info">
+                    <span>Score: <strong id="snake-score">0</strong></span>
+                    <button class="reset-btn" onclick="initSnake()">New Game</button>
+                </div>
+            </div>
+            <canvas id="snakeCanvas" width="400" height="400"></canvas>
+            <p class="game-instructions">Use Arrow Keys to move. Eat the food to grow!</p>
+        </div>
+
+        <!-- Tic Tac Toe Game -->
+        <div id="tictactoe" class="game-screen">
+            <div class="game-header">
+                <h2>⭕ Tic Tac Toe</h2>
+                <button class="reset-btn" onclick="initTicTacToe()">New Game</button>
+            </div>
+            <div class="tictactoe-board" id="tictactoe-board"></div>
+            <p id="tictactoe-status" class="game-status">Your turn (X)</p>
+        </div>
+
+        <!-- 2048 Game -->
+        <div id="2048" class="game-screen">
+            <div class="game-header">
+                <h2>2048</h2>
+                <div class="game-info">
+                    <span>Score: <strong id="game2048-score">0</strong></span>
+                    <button class="reset-btn" onclick="init2048()">New Game</button>
+                </div>
+            </div>
+            <div class="grid-2048" id="grid-2048"></div>
+            <p class="game-instructions">Use Arrow Keys to move tiles. Combine same numbers!</p>
+        </div>
+
+        <!-- Memory Game -->
+        <div id="memory" class="game-screen">
+            <div class="game-header">
+                <h2>🧠 Memory Game</h2>
+                <div class="game-info">
+                    <span>Matches: <strong id="memory-matches">0</strong>/6</span>
+                    <button class="reset-btn" onclick="initMemory()">New Game</button>
+                </div>
+            </div>
+            <div class="memory-grid" id="memory-grid"></div>
+        </div>
+
+        <!-- Flappy Bird Game -->
+        <div id="flappy" class="game-screen">
+            <div class="game-header">
+                <h2>🐦 Flappy Bird</h2>
+                <div class="game-info">
+                    <span>Score: <strong id="flappy-score">0</strong></span>
+                    <button class="reset-btn" onclick="initFlappy()">New Game</button>
+                </div>
+            </div>
+            <canvas id="flappyCanvas" width="400" height="500"></canvas>
+            <p class="game-instructions">Click or Press SPACE to fly!</p>
+        </div>
+    </div>
+
+    <script src="games/snake.js"></script>
+    <script src="games/tictactoe.js"></script>
+    <script src="games/2048.js"></script>
+    <script src="games/memory.js"></script>
+    <script src="games/flappy.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
