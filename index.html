@@ -3,59 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codez Games - Play Awesome Games</title>
+    <title>Codez Games - Unlimited Games</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">
-        <h1>🎮 CODEZ GAMES</h1>
-        <p>Unlimited Games • Play Now</p>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🎮 CODEZ GAMES</div>
+            <div class="nav-links">
+                <a href="#" onclick="scrollToSection('games')">Games</a>
+                <a href="#" onclick="scrollToSection('popular')">Popular</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>UNLIMITED GAMES</h1>
+            <p>Play your favorite games instantly, no downloads required</p>
+        </div>
     </div>
 
-    <div class="games-container">
-        <!-- Snake Game -->
-        <div class="game-tile" onclick="startGame('snake')">
-            <div class="game-tile-icon">🐍</div>
-            <div class="game-tile-title">SNAKE</div>
-            <div class="game-tile-desc">Eat & Grow</div>
-        </div>
+    <div class="container">
+        <div id="games" class="games-section">
+            <h2 class="section-title">ALL GAMES</h2>
+            <div class="games-grid">
+                <div class="game-box" onclick="startGame('snake')">
+                    <div class="game-box-inner">
+                        <div class="game-icon">🐍</div>
+                        <div class="game-name">SNAKE</div>
+                        <div class="game-desc">Classic Arcade</div>
+                    </div>
+                </div>
 
-        <!-- Tic Tac Toe -->
-        <div class="game-tile" onclick="startGame('tictactoe')">
-            <div class="game-tile-icon">⭕</div>
-            <div class="game-tile-title">TIC TAC TOE</div>
-            <div class="game-tile-desc">Beat the AI</div>
-        </div>
+                <div class="game-box" onclick="startGame('tictactoe')">
+                    <div class="game-box-inner">
+                        <div class="game-icon">⭕</div>
+                        <div class="game-name">TIC TAC TOE</div>
+                        <div class="game-desc">Strategy</div>
+                    </div>
+                </div>
 
-        <!-- 2048 -->
-        <div class="game-tile" onclick="startGame('2048')">
-            <div class="game-tile-icon">2️⃣</div>
-            <div class="game-tile-title">2048</div>
-            <div class="game-tile-desc">Combine Tiles</div>
-        </div>
+                <div class="game-box" onclick="startGame('2048')">
+                    <div class="game-box-inner">
+                        <div class="game-icon">🔢</div>
+                        <div class="game-name">2048</div>
+                        <div class="game-desc">Puzzle</div>
+                    </div>
+                </div>
 
-        <!-- Memory Game -->
-        <div class="game-tile" onclick="startGame('memory')">
-            <div class="game-tile-icon">🧠</div>
-            <div class="game-tile-title">MEMORY</div>
-            <div class="game-tile-desc">Match Pairs</div>
-        </div>
+                <div class="game-box" onclick="startGame('memory')">
+                    <div class="game-box-inner">
+                        <div class="game-icon">🧠</div>
+                        <div class="game-name">MEMORY</div>
+                        <div class="game-desc">Brain Game</div>
+                    </div>
+                </div>
 
-        <!-- Flappy Bird -->
-        <div class="game-tile" onclick="startGame('flappy')">
-            <div class="game-tile-icon">🐦</div>
-            <div class="game-tile-title">FLAPPY BIRD</div>
-            <div class="game-tile-desc">Fly & Survive</div>
+                <div class="game-box" onclick="startGame('flappy')">
+                    <div class="game-box-inner">
+                        <div class="game-icon">🐦</div>
+                        <div class="game-name">FLAPPY BIRD</div>
+                        <div class="game-desc">Arcade</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Game Modal -->
-    <div id="gameModal" class="modal" style="display: none;">
+    <div id="gameModal" class="modal">
+        <div class="modal-overlay"></div>
         <div class="modal-content">
-            <button class="close-btn" onclick="closeGame()">✕</button>
+            <button class="modal-close" onclick="closeGame()">✕</button>
             <div id="gameArea"></div>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2026 Codez Games. All rights reserved.</p>
+    </footer>
 
     <script src="games/snake.js"></script>
     <script src="games/tictactoe.js"></script>

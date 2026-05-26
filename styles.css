@@ -4,128 +4,245 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #5555FF 0%, #0099FF 100%);
-    min-height: 100vh;
-    padding: 20px;
+html {
+    scroll-behavior: smooth;
 }
 
-.header {
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00ff88;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-links a:hover {
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 150px 20px 100px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: 3px;
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    opacity: 0.95;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.5em;
+    font-weight: bold;
     text-align: center;
     color: white;
-    padding: 30px 20px;
-    margin-bottom: 30px;
-}
-
-.header h1 {
-    font-size: 3em;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     letter-spacing: 2px;
 }
 
-.header p {
-    font-size: 1.3em;
-    opacity: 0.95;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.games-container {
+/* Games Grid */
+.games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
 }
 
-.game-tile {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 240, 255, 0.95) 100%);
-    border-radius: 15px;
-    padding: 30px 20px;
+/* Game Box */
+.game-box {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
     cursor: pointer;
-    text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    border: 3px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    height: 250px;
 }
 
-.game-tile:hover {
-    transform: translateY(-15px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    border-color: #5555FF;
+.game-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    pointer-events: none;
 }
 
-.game-tile:active {
-    transform: translateY(-10px) scale(1.02);
+.game-box-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
-.game-tile-icon {
+.game-icon {
     font-size: 4em;
     margin-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
-.game-tile-title {
+.game-name {
     font-size: 1.3em;
     font-weight: bold;
-    color: #5555FF;
+    color: #333;
     margin-bottom: 8px;
     letter-spacing: 1px;
 }
 
-.game-tile-desc {
+.game-desc {
     font-size: 0.9em;
     color: #666;
     font-style: italic;
 }
 
-/* Modal Styles */
+.game-box:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+}
+
+.game-box:hover .game-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.game-box:active {
+    transform: translateY(-15px) scale(0.98);
+}
+
+/* Modal */
 .modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 1000;
 }
 
-.modal-content {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    max-width: 90vw;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
 }
 
-.close-btn {
+.modal-content {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #5555FF;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5em;
+    width: 45px;
+    height: 45px;
+    font-size: 1.8em;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 1001;
+    z-index: 10;
 }
 
-.close-btn:hover {
-    background: #0099FF;
-    transform: scale(1.1);
+.modal-close:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 /* Game Area */
@@ -143,18 +260,21 @@ body {
     align-items: center;
     width: 100%;
     padding: 20px;
-    background: linear-gradient(135deg, #5555FF 0%, #0099FF 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    border-radius: 10px;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .game-header h2 {
     font-size: 1.8em;
+    letter-spacing: 1px;
 }
 
 .game-info {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -164,14 +284,15 @@ body {
 }
 
 .reset-btn {
-    padding: 10px 20px;
+    padding: 12px 25px;
     background: white;
-    color: #5555FF;
+    color: #667eea;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
+    font-size: 1em;
 }
 
 .reset-btn:hover {
@@ -181,9 +302,10 @@ body {
 
 /* Canvas */
 canvas {
-    border: 3px solid #5555FF;
+    border: 3px solid #667eea;
     border-radius: 10px;
     background: #000;
+    max-width: 100%;
 }
 
 /* Tic Tac Toe */
@@ -198,7 +320,7 @@ canvas {
     width: 120px;
     height: 120px;
     background: #f0f0f0;
-    border: 3px solid #5555FF;
+    border: 3px solid #667eea;
     border-radius: 10px;
     font-size: 2.5em;
     font-weight: bold;
@@ -217,7 +339,7 @@ canvas {
 .game-status {
     text-align: center;
     font-size: 1.2em;
-    color: #5555FF;
+    color: #667eea;
     font-weight: bold;
     padding: 15px;
     background: #f0f0ff;
@@ -272,7 +394,7 @@ canvas {
 .memory-card {
     width: 100px;
     height: 100px;
-    background: linear-gradient(135deg, #5555FF 0%, #0099FF 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -287,13 +409,13 @@ canvas {
 
 .memory-card:hover:not(.matched) {
     transform: scale(1.08);
-    box-shadow: 0 5px 15px rgba(85, 85, 255, 0.4);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 .memory-card.flipped {
     background: white;
     color: #333;
-    border: 3px solid #5555FF;
+    border: 3px solid #667eea;
 }
 
 .memory-card.matched {
@@ -302,23 +424,42 @@ canvas {
     cursor: default;
 }
 
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-top: 2px solid #667eea;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    .header h1 {
-        font-size: 2em;
+    .hero-content h1 {
+        font-size: 2.5em;
     }
 
-    .games-container {
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .games-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 15px;
     }
 
-    .game-tile {
-        padding: 20px 15px;
+    .game-box {
+        height: 200px;
     }
 
-    .game-tile-icon {
+    .game-icon {
         font-size: 3em;
+    }
+
+    .modal-content {
+        padding: 20px;
+        width: 90%;
     }
 
     .tictactoe-cell {
@@ -336,31 +477,51 @@ canvas {
         height: 80px;
         font-size: 1.5em;
     }
-
-    canvas {
-        max-width: 100%;
-    }
 }
 
 @media (max-width: 480px) {
-    .header h1 {
-        font-size: 1.5em;
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9em;
     }
 
-    .games-container {
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+
+    .games-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 10px;
     }
 
-    .game-tile-icon {
+    .game-box {
+        height: 150px;
+    }
+
+    .game-icon {
         font-size: 2.5em;
+        margin-bottom: 8px;
     }
 
-    .game-tile-title {
-        font-size: 1em;
+    .game-name {
+        font-size: 0.9em;
     }
 
-    .game-tile-desc {
-        font-size: 0.8em;
+    .game-desc {
+        font-size: 0.75em;
+    }
+
+    .modal-content {
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .game-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .game-header h2 {
+        font-size: 1.3em;
     }
 }

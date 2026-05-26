@@ -11,7 +11,7 @@ function startGame(gameId) {
     if (gameId === 'snake') {
         gameArea.innerHTML = `
             <div class="game-header">
-                <h2>🐍 SNAKE GAME</h2>
+                <h2>🐍 SNAKE</h2>
                 <div class="game-info">
                     <span>Score: <span id="snake-score">0</span></span>
                     <button class="reset-btn" onclick="initSnake()">New Game</button>
@@ -44,7 +44,7 @@ function startGame(gameId) {
     } else if (gameId === 'memory') {
         gameArea.innerHTML = `
             <div class="game-header">
-                <h2>🧠 MEMORY GAME</h2>
+                <h2>🧠 MEMORY</h2>
                 <div class="game-info">
                     <span>Matches: <span id="memory-matches">0</span>/6</span>
                     <button class="reset-btn" onclick="initMemory()">New Game</button>
@@ -67,7 +67,8 @@ function startGame(gameId) {
     }
     
     // Show modal
-    modal.style.display = 'flex';
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
     
     // Initialize the game after a short delay to ensure DOM is ready
     setTimeout(() => {
@@ -88,6 +89,7 @@ function startGame(gameId) {
 function closeGame() {
     const modal = document.getElementById('gameModal');
     modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
     
     // Stop all game loops
     if (snakeGame.gameLoop) clearInterval(snakeGame.gameLoop);
@@ -103,7 +105,16 @@ function closeGame() {
 // Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById('gameModal');
-    if (event.target === modal) {
+    const modalContent = document.querySelector('.modal-content');
+    if (event.target === modal || event.target === document.querySelector('.modal-overlay')) {
         closeGame();
+    }
+}
+
+// Scroll to section
+function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
     }
 }
